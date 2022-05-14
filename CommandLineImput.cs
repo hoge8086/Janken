@@ -5,6 +5,7 @@ namespace JankenGame
 {
     class CommandLineImput : IPlayer
     {
+        public string Name => "あなた";
         public Hand GetHand()
         {
             Hand hand = null;

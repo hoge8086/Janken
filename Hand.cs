@@ -12,12 +12,12 @@ namespace JankenGame
             Draw,
         }
         public HandType Type { get; private set; }
-        private Predicate<Hand> BeatCondition;
+        private Predicate<Hand> winCondition;
 
-        private Hand(HandType type, Predicate<Hand> beatCondition)
+        private Hand(HandType type, Predicate<Hand> winCondition)
         {
             Type = type;
-            BeatCondition = beatCondition;
+            this.winCondition = winCondition;
         }
 
         public ResultOfBattle Battle(Hand opponent)
@@ -25,10 +25,10 @@ namespace JankenGame
             if(this.Type == opponent.Type)
                 return ResultOfBattle.Draw;
 
-            if (BeatCondition(opponent))
+            if (winCondition(opponent))
                 return ResultOfBattle.Win;
 
-            if (opponent.BeatCondition(this))
+            if (opponent.winCondition(this))
                 return ResultOfBattle.Lose;
 
             return ResultOfBattle.Draw;

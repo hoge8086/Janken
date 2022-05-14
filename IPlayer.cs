@@ -2,6 +2,7 @@
 {
     interface IPlayer
     {
+        string Name { get; }
         Hand GetHand();
     }
 }
